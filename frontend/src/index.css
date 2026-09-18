@@ -1,0 +1,77 @@
+@import "tailwindcss";
+
+/* ============ BurgerHouse Design Tokens (Tailwind v4) ============ */
+@theme {
+  --color-coal: #0b0b0d;        /* page background */
+  --color-charcoal: #141417;    /* section background */
+  --color-card: #1a1a1f;        /* card surface */
+  --color-line: #2a2a31;        /* borders */
+  --color-flame: #f43f2e;       /* primary red */
+  --color-ember: #f97316;       /* orange */
+  --color-mustard: #facc15;     /* yellow — ratings/badges */
+  --color-cream: #faf7f2;       /* main text */
+  --color-smoke: #a1a1aa;       /* muted text */
+
+  --font-display: "Anton", sans-serif;
+  --font-sans: "Outfit", sans-serif;
+
+  --shadow-soft: 0 10px 40px -12px rgb(0 0 0 / 0.6);
+  --shadow-glow: 0 0 60px -10px rgb(249 115 22 / 0.35);
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--color-coal);
+  color: var(--color-cream);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Display headline utility */
+.display {
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  line-height: 0.95;
+}
+
+/* Glassmorphism surface */
+.glass {
+  background: rgb(20 20 23 / 0.55);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgb(255 255 255 / 0.08);
+}
+
+/* Flame gradient text */
+.text-flame-gradient {
+  background: linear-gradient(100deg, #f43f2e 10%, #f97316 55%, #facc15 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Marquee ticker */
+@keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+.marquee-track { animation: marquee 28s linear infinite; }
+
+/* Skeleton shimmer */
+@keyframes shimmer { from { background-position: -400px 0; } to { background-position: 400px 0; } }
+.skeleton {
+  background: linear-gradient(90deg, #1a1a1f 25%, #24242b 50%, #1a1a1f 75%);
+  background-size: 800px 100%;
+  animation: shimmer 1.4s infinite linear;
+}
+
+/* Accessibility: visible keyboard focus */
+:focus-visible { outline: 2px solid var(--color-ember); outline-offset: 3px; border-radius: 6px; }
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .marquee-track, .skeleton { animation: none; }
+  * { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
+}
+
+::selection { background: var(--color-ember); color: #0b0b0d; }

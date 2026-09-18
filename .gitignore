@@ -1,0 +1,24 @@
+# deps
+node_modules/
+**/node_modules/
+
+# env / secrets
+.env
+.env.*
+!.env.example
+
+# build output
+dist/
+build/
+.vercel/
+
+# logs
+npm-debug.log*
+yarn-error.log*
+*.log
+
+# os / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
